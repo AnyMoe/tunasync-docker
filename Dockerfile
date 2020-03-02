@@ -20,8 +20,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
         mkdir -p /etc/tunasync /mirrors /var/log/tunasync ;\
         git clone https://github.com/tuna/tunasync-scripts/ /mirrors/scripts      
 
-RUN groupadd -g 2001 mirrorgroup ;\
-    useradd -u 2101 -g mirrorgroup mirrors ;\
+RUN addgroup --gid 2001 mirrorgroup ;\
+    adduser --disabled-password --uid 2101 mirrors mirrorgroup ;\
     chown -R mirrors:mirrorgroup /mirrors ;\
     chmod 775 /mirrors
 
